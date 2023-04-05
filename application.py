@@ -1,17 +1,16 @@
 import streamlit as st
-from src.scrapper import FlipkartReviewsScrapping, AmazonReviewsScrapping
+from src.scrapper import FlipkartReviewsScrapping
 
 
 # User interface
-st.header("Product reviews from Ecommerce websites!")
+st.header("Product reviews from Flipkart!")
 
 # User inputs
 st.sidebar.subheader('User Inputs:')
-ecom_website = st.sidebar.selectbox(label="Which platform are you looking for?", options=('Flipkart', 'Amazon'))
 search_item = st.sidebar.text_input('Which product are you looking for?')
 
 # Results
-if ecom_website == 'Flipkart':
+if search_item:
     scrapper = FlipkartReviewsScrapping()
     results = scrapper.get_reviews(search_item=search_item)
 
@@ -21,4 +20,3 @@ if ecom_website == 'Flipkart':
     st.write('Reviews:')
     for item in results[1:]:
         st.table(item)
-

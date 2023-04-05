@@ -64,10 +64,7 @@ class FlipkartReviewsScrapping(EComReviewsScrapping):
         return reviews
 
 
-class AmazonReviewsScrapping(EComReviewsScrapping):
-    def __init__(self):
-        super().__init__()
-        pass
-
-    def get_reviews(self, search_item: str):
-        pass
+if __name__ == '__main__':
+    scrapper = FlipkartReviewsScrapping()
+    results = scrapper.get_reviews(search_item='iphone13')
+    print(results)
